@@ -56,4 +56,17 @@ public class Loops {
 		}
 
 	}
+	
+	public  void setPlayerName(){
+		
+		System.out.println("Rohit Sharma");
+	}
+	
+	
+	
+	
+	
+	
+	
+	
 }
