@@ -54,19 +54,17 @@ public class Loops {
 			i++;
 
 		}
-
-	}
+}
 	
+	public void getSportName(){
+	
+	System.out.println("Cricket");
+	}
+
 	public  void setPlayerName(){
 		
 		System.out.println("Rohit Sharma");
 	}
-	
-	
-	
-	
-	
-	
 	
 	
 }
