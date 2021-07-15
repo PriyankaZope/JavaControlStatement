@@ -54,6 +54,19 @@ public class Loops {
 			i++;
 
 		}
-
+}
+	
+	
+	public void getSportName(){
+	
+	System.out.println("Cricket");
 	}
+	
+	
+	
+	
+	
+	
+	
+
 }
