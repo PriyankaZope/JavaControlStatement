@@ -6,7 +6,7 @@ public class SignInFlow {
 
 	private SignUpPage objSignUpPage;
 	private HomePage objHomePage;
-	private String fbtestData = "";
+	private String testData = "";
 	private Utility objUtility;
 	Random objRandom = new Random();
 
@@ -15,75 +15,59 @@ public class SignInFlow {
 		objHomePage = new HomePage();
 		objUtility = new Utility();
 	}
-	public String getRandomString(int lenght) {
-		String chars = "abcdefghiklmnopqrstuvwxyz";
-		String randomstring = "";
-		for (int i = 0; i < lenght; i++) {
-			int rnum = (int) Math.floor(Math.random() * chars.length());
-			randomstring += chars.substring(rnum, rnum + 1);
-		}
-		return randomstring;
-	}
-	public String setMobileNumber1() {
-		String mobNo = " ";
-
-		for (int i = 0; i < 8; i++) {
-			mobNo = mobNo + objRandom.nextInt(9);
-		}
-		return mobNo;
-	}
-	
 
 	public void signUp() {
-		fbtestData = objUtility.createSignUpTestData().get("Name")+getRandomString(3);
-		if (!fbtestData.equals("")){
-			objSignUpPage.setName(fbtestData);
-			}else {System.out.println("Name is Empty");}
-		
+		testData = objUtility.createSignUpTestData().get("Name") + objUtility.getRandomString(3);
+		if (!testData.equals(""))
+			objSignUpPage.setName(testData);
 
-		fbtestData = objUtility.createSignUpTestData().get("LastName")+getRandomString(3);
-		if (!fbtestData.equals(""))
-			objSignUpPage.setLastName(fbtestData);
+		testData = objUtility.createSignUpTestData().get("LastName") + objUtility.getRandomString(3);
+		if (!testData.equals(""))
+			objSignUpPage.setLastName(testData);
 
-		fbtestData = objUtility.createSignUpTestData().get("MobileNo")+setMobileNumber1();
-		if (!fbtestData.equals(""))
-			objSignUpPage.setMobileNumber(fbtestData);
+		testData = objUtility.createSignUpTestData().get("MobileNo") + objUtility.setMobileNumber1();
+		if (!testData.equals(""))
+			objSignUpPage.setMobileNumber(testData);
 
-		fbtestData = objUtility.createSignUpTestData().get("Password");
-		if (!fbtestData.equals(""))
-			objSignUpPage.setPassword(fbtestData);
+		testData = objUtility.createSignUpTestData().get("Password")+objUtility.getRandomString(5);
+		if (!testData.equals(""))
+			objSignUpPage.setPassword(testData);
 
-		fbtestData = objUtility.createSignUpTestData().get("BirthDate");
-		if (!fbtestData.equals(""))
-			objSignUpPage.setBirthDate(fbtestData);
+		testData = objUtility.createSignUpTestData().get("BirthDate")+objUtility.getRandomDate(30);
+		if (!testData.equals(""))
+			objSignUpPage.setBirthDate(testData);
 
-		fbtestData = objUtility.createSignUpTestData().get("Month");
-		if (!fbtestData.equals(""))
-			objSignUpPage.setBirthMonth(fbtestData);
+		testData = objUtility.createSignUpTestData().get("Month");
+		if (!testData.equals(""))
+			objSignUpPage.setBirthMonth(testData);
 
-		fbtestData = objUtility.createSignUpTestData().get("Year");
-		if (!fbtestData.equals(""))
-			objSignUpPage.setBirthYear(fbtestData);
+		testData = objUtility.createSignUpTestData().get("Year")+objUtility.getYear();
+		if (!testData.equals(""))
+			objSignUpPage.setBirthYear(testData);
 
-		fbtestData = objUtility.createSignUpTestData().get("Gender");
-		if (!fbtestData.equals(""))
-			objSignUpPage.selectGender(fbtestData);
-		
-		fbtestData = objUtility.createSignUpTestData().get("SignUp Button");
-		if (!fbtestData.equals(""))
+		testData = objUtility.createSignUpTestData().get("Gender");
+		if (!testData.equals(""))
+			objSignUpPage.selectGender(testData);
+
+		testData = objUtility.createSignUpTestData().get("SignUp Button");
+		if (!testData.equals(""))
 			objSignUpPage.clickSignUpButton();
 
 	}
 
-	public void verifySignUpDoneSuccessfully(){
-        
-    String actualValue = objHomePage.getLogoutTextOnHomePage();
-    fbtestData = objUtility.createSignUpTestData().get("SignUp Button");
-    if(!fbtestData.equals("")){
-        if(fbtestData.equals(actualValue))
-            System.out.println("Passed Test!!!");
-        else
-            System.out.println("Failed Test!!!");
-        
 
-}}}
+
+		public void verifySignUpDoneSuccessfully(){
+
+		    String actualValue = objHomePage.getLogoutTextOnHomePage();
+		    testData = objUtility.createSignUpTestData().get("Logout Text Visible");
+		    if(!testData.equals("")){
+		        if(testData.equals(actualValue))
+		            System.out.println("Passed Test!!!");
+		        else
+		            System.out.println("Failed Test!!!");
+
+
+		}
+	}
+}
